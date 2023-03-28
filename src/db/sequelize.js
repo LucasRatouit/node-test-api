@@ -9,11 +9,10 @@ let sequelize
 if (process.env.NODE_ENV === 'production') {
     sequelize = new Sequelize('pokedex_2lqn', 'pokedex_2lqn_user', '8Jy5vQVo5VZVpi1NDjw7TZ5Cvr1xw6VY', {
         host: 'dpg-cghb4u02qv23kcphdl2g-a.frankfurt-postgres.render.com',
-        dialect: 'postgre',
+        dialect: 'postgresql',
         dialectOptions: {
             timezone: 'Etc/GMT-2',
-        },
-        logging: true
+        }
     })
 } else {
     sequelize = new Sequelize('pokedex', 'root', '', {
@@ -47,7 +46,7 @@ const initDb = () => {
 
         console.log('La base de donnée a bien été initialisée !')
     })
-        .catch(error => console.log(`Impossible de synchronisée la base de données "Pokedex" !`))
+        .catch(error => console.log(`Impossible de synchronisée la base de données ! Erreur: ${error} `))
 }
 
 module.exports = {
