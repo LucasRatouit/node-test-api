@@ -10,6 +10,7 @@ if (process.env.NODE_ENV === 'production') {
     sequelize = new Sequelize('pokedex_2lqn', 'pokedex_2lqn_user', '8Jy5vQVo5VZVpi1NDjw7TZ5Cvr1xw6VY', {
         host: 'dpg-cghb4u02qv23kcphdl2g-a.frankfurt-postgres.render.com',
         dialect: 'postgresql',
+        ssl: true,
         dialectOptions: {
             timezone: 'Etc/GMT-2',
         }
