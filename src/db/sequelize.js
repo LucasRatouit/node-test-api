@@ -33,19 +33,11 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-sequelize.authenticate()
-    .then(() => {
-        console.log('Authentification réussi !')
-    })
-    .catch(err => {
-        console.error('Impossible de ce connecter à la base de données : ', err)
-    })
-
 const Pokemon = PokemonModel(sequelize, DataTypes)
 const User = UserModel(sequelize, DataTypes)
 
 const initDb = () => {
-    return sequelize.sync({ force: true }).then(_ => {
+    return sequelize.sync().then(_ => {
         pokemons.map(pokemon => {
             Pokemon.create({
                 name: pokemon.name,
