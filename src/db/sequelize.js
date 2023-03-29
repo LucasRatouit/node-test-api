@@ -33,15 +33,6 @@ if (process.env.NODE_ENV === 'production') {
     })
 }
 
-/*const sequelize = new Sequelize('pokedex', 'root', '', {
-    host: 'localhost',
-    dialect: 'mariadb',
-    dialectOptions: {
-        timezone: 'Etc/GMT-2',
-    },
-    logging: false
-})*/
-
 sequelize.authenticate()
     .then(() => {
         console.log('Authentification réussi !')
@@ -54,7 +45,7 @@ const Pokemon = PokemonModel(sequelize, DataTypes)
 const User = UserModel(sequelize, DataTypes)
 
 const initDb = () => {
-    return sequelize.sync({ force: true }).then(_ => {
+    return sequelize.sync().then(_ => {
         pokemons.map(pokemon => {
             Pokemon.create({
                 name: pokemon.name,
