@@ -7,11 +7,19 @@ const bcrypt = require('bcrypt')
 let sequelize
 
 if (process.env.NODE_ENV === 'production') {
-    sequelize = new Sequelize('postgres', 'postgres', '8Jy5vQVo5VZVpi1NDjw7TZ5Cvr1xw6VY', {
+    sequelize = new Sequelize('pokedex_2lqn', 'pokedex_2lqn_user', '8Jy5vQVo5VZVpi1NDjw7TZ5Cvr1xw6VY', {
         host: 'dpg-cghb4u02qv23kcphdl2g-a.frankfurt-postgres.render.com',
-        dialect: 'postgresql',
+        dialect: 'postgres',
+        port: 5432,
         dialectOptions: {
             timezone: 'Etc/GMT-2',
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        },
+        define: {
+            timestamps: false
         }
     })
 } else {
@@ -24,6 +32,14 @@ if (process.env.NODE_ENV === 'production') {
         logging: false
     })
 }
+
+sequelize.authenticate()
+    .then(() => {
+        console.log('Authentification réussi !')
+    })
+    .catch(err => {
+        console.error('Impossible de ce connecter à la base de données : ', err)
+    })
 
 const Pokemon = PokemonModel(sequelize, DataTypes)
 const User = UserModel(sequelize, DataTypes)
