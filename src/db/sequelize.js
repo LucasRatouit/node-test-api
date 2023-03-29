@@ -4,7 +4,7 @@ const UserModel = require('../models/user')
 const pokemons = require('./mock-pokemon')
 const bcrypt = require('bcrypt')
 
-/*let sequelize
+let sequelize
 
 if (process.env.NODE_ENV === 'production') {
     sequelize = new Sequelize('pokedex_2lqn', 'pokedex_2lqn_user', '8Jy5vQVo5VZVpi1NDjw7TZ5Cvr1xw6VY', {
@@ -31,16 +31,16 @@ if (process.env.NODE_ENV === 'production') {
         },
         logging: false
     })
-}*/
+}
 
-const sequelize = new Sequelize('pokedex', 'root', '', {
+/*const sequelize = new Sequelize('pokedex', 'root', '', {
     host: 'localhost',
     dialect: 'mariadb',
     dialectOptions: {
         timezone: 'Etc/GMT-2',
     },
     logging: false
-})
+})*/
 
 sequelize.authenticate()
     .then(() => {
