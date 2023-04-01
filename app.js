@@ -15,7 +15,7 @@ app
 sequelize.initDb()
 
 app.get('/', (req, res) => {
-    res.json('Hello, Heroku !')
+    res.json('Hello, NodeJS !')
 })
 
 // Ici nous placerons nos futurs points de terminaison.
