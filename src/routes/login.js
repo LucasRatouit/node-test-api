@@ -8,7 +8,7 @@ module.exports = (app) => {
 
         User.findOne({ where: { username: req.body.username } }).then(user => {
             if (!user) {
-                const message = `L'utilisateur ${user} n'existe pas !`
+                const message = `L'utilisateur ${req.body.username} n'existe pas !`
                 return res.status(404).json({ message })
             }
 
@@ -25,7 +25,7 @@ module.exports = (app) => {
                     { expiresIn: '24h' }
                 )
 
-                const message = `L'utilisateur a été connecté avec succès`;
+                const message = `L'utilisateur a été connecté avec succès !`;
                 return res.json({ message, data: user, token })
             })
         })

@@ -30,7 +30,7 @@ module.exports = (app) => {
         } else {
             Pokemon.findAll({ order: ['name'] })
                 .then(pokemons => {
-                    const message = 'La liste des pokémons a bien été récupérée.'
+                    const message = 'La liste des pokémons a bien été récupérée :'
                     res.json({ message, data: pokemons })
                 })
                 .catch(error => {
