@@ -3,6 +3,7 @@ const favicon = require('serve-favicon')
 const bodyParser = require('body-parser')
 const sequelize = require('./src/db/sequelize')
 const cors = require('cors')
+require('dotenv').config();
 
 const app = express()
 const port = process.env.PORT || 4000
