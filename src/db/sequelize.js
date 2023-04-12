@@ -7,10 +7,10 @@ const bcrypt = require('bcrypt')
 let sequelize
 
 if (process.env.NODE_ENV === 'production') {
-    sequelize = new Sequelize('pokedex_2lqn', 'pokedex_2lqn_user', '8Jy5vQVo5VZVpi1NDjw7TZ5Cvr1xw6VY', {
+    sequelize = new Sequelize('pokedex_2lqn', process.env.DATA_BASE, '8Jy5vQVo5VZVpi1NDjw7TZ5Cvr1xw6VY', {
         host: 'dpg-cghb4u02qv23kcphdl2g-a.frankfurt-postgres.render.com',
         dialect: 'postgres',
-        port: 5432,
+        port: process.env.PORT,
         dialectOptions: {
             timezone: 'Etc/GMT-2',
             ssl: {
